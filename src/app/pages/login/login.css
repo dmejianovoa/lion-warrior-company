@@ -1,0 +1,269 @@
+.login-page {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #080808;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+/* == RESPONSIVE == */
+
+@media (max-width: 900px) {
+    .login-page {
+        grid-template-columns: 1fr;
+    }
+
+    .login-left {
+        padding: 40px 20px;
+    }
+
+    .login-logo {
+        width: 220px;
+    }
+
+    .login-left h1 {
+        font-size: 36px;
+    }
+
+    .login-left p {
+        font-size: 16px;
+    }
+
+    .login-right {
+        padding: 30px 20px;
+        min-height: auto;
+    }
+
+    .client-btn {
+        bottom: 15px;
+        right: 15px;
+        padding: 10px 16px;
+        font-size: 12px;
+    }
+}
+
+
+/* IZQUIERDA */
+.login-left {
+    background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('/bnb.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px;
+}
+
+.login-logo {
+    width: 380px;
+    margin-bottom: 30px;
+}
+
+.login-left h1 {
+    font-size: 64px;
+    font-weight: 900;
+    font-family: 'Cinzel', serif;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.login-left h1 span {
+    color: #d4a63c;
+}
+
+.login-left p {
+    color: #bdbdbd;
+    font-size: 20px;
+    max-width: 400px;
+    line-height: 1.7;
+}
+
+/* DERECHA */
+
+.login-right {
+    display: flex;
+    justify-content: center;  
+    align-items: center;      
+    position: relative;
+    overflow: hidden;
+    padding: 40px;
+    min-height: calc(100vh - 120px);
+}
+
+.login-box {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; 
+    background-color: #181818;
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid #d4a63c;
+    z-index: 3;
+}
+
+.lion-peek {
+    position: absolute;
+    top: 140px;
+    right: -120px;
+    transform: translateX(-50%);
+    width: 32%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.lion-claws {
+    position: absolute;
+    bottom: 0;
+    top: 120px;
+    right: 80px;
+    transform: translateX(-50%);
+    width: 20%;
+    z-index: 4;
+    pointer-events: none;
+}
+
+.login-box h2 {
+    font-size: 28px;
+}
+
+.custom-input {
+    background-color: #161616;
+    border:  1px solid #2a2a2a;
+    color: white;
+    border-radius: 10px;
+    padding: 12px 16px;
+    height: auto;
+}
+
+.custom-input:focus {
+    background-color: #161616;
+    border-color: #d4a63c;
+    box-shadow: none;
+    color: white;
+}
+
+.custom-input::placeholder {
+    color: #777;
+}
+
+.forgot-password {
+    color: #d4a63c;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    color: #d4a63c;
+}
+
+.register-link {
+    color: #d4a63c;
+    text-decoration: none;
+}
+
+.register-link:hover {
+    color: #d4a63c;
+}
+
+.login-btn {
+    background-color: #bd973e;
+    color: black;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 16px;
+}
+
+.login-btn:hover {
+    background-color: #bd973e;
+    color: black;
+}
+
+.custom-line {
+    border-color: #2a2a2a;
+}
+
+/* BOTON CLIENTE */
+.client-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, #bd973e, #d4a63c);
+    color: black;
+    text-decoration: none;
+    padding: 14px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 5px 25px rgba(197, 160, 89, 0.4);
+    animation: pulse 2s infinite;
+    transition: 0.3s;
+    z-index: 999;
+}
+
+.client-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 35px rgba(197, 160, 89, 0.6);
+    color: black;
+}
+
+.client-btn-arrow {
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.client-btn:hover .client-btn-arrow {
+    transform: translateX(5px);
+}
+
+@keyframes pulse {
+    0%   { box-shadow: 0 5px 25px rgba(197, 160, 89, 0.4); }
+    50%  { box-shadow: 0 5px 40px rgba(197, 160, 89, 0.7); }
+    100% { box-shadow: 0 5px 25px rgba(197, 160, 89, 0.4); }
+}
+
+.password-box {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 13px;
+    color: #777;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+.password-toggle:hover {
+    color: #d4a63c;
+}
+
+@keyframes shakeError {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+}
+
+.shake {
+    animation: shakeError 0.4s ease-in-out;
+    border-color: #e04a4a !important;
+}
+
+.text-danger {
+    color: #e57373 !important;
+    font-size: 13px;
+    margin-top: 4px;
+}

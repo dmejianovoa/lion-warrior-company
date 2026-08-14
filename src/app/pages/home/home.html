@@ -1,0 +1,453 @@
+<div animate.enter class="page-fade-in">
+
+<!-- HERO SLIDER AUTOMÁTICO -->
+<section class="hero-section">
+  <div class="hero-slider">
+    <div class="slide active" style="background-image: url('image1.jpeg')"></div>
+    <div class="slide" style="background-image: url('image2.jpg')"></div>
+    <div class="slide" style="background-image: url('image3.jpg')"></div>
+    <div class="slide" style="background-image: url('image4.jpg')"></div>
+    
+<!--TEXTO ESTATICO-->
+<div class="hero-static-text">
+    <h1>LION WARRIOR <span>COMPANY</span></h1>
+</div>
+
+    <!-- PUNTOS -->
+    <div class="slider-dots">
+      <span class="dot active" (click)="goToSlide(0)"></span>
+      <span class="dot" (click)="goToSlide(1)"></span>
+      <span class="dot" (click)="goToSlide(2)"></span>
+      <span class="dot" (click)="goToSlide(3)"></span>
+    </div>
+  </div>
+</section>
+
+<!-- CARACTERÍSTICAS --> <!-- REVISAR INFORMACION, HACER LINK DE BADGES-->
+<section class="features-section py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-5">Barbería Premium <i class="bi bi-star-fill"></i></h2>
+    
+    <div class="row g-4">
+
+      <!-- CARD 1 -->
+      <div class="col-md-4">
+        <div class="feature-card text-center">
+          <div class="icon-box">
+            <img src="reserv.png" alt="Reservas">
+          </div>
+          <h4>Reservas Fáciles</h4>
+          <p>Agenda tu cita en cualquier momento desde tu dispositivo favorito.</p>
+          <a routerLink="/login" class="btn btn-warning btn-sm mt-2 rounded-pill px-3">
+            Reserva aqui
+          </a>      
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="col-md-4">
+        <div class="feature-card text-center">
+          <div class="icon-box">
+            <img src="Barb.png" alt="Barberos">
+          </div>
+          <h4>Barberos Expertos</h4>
+          <p>Nuestro equipo de profesionales garantiza resultados excepcionales.</p>
+          <a (click)="scrollToBarbers()" class="btn btn-warning btn-sm mt-2 rounded-pill px-3" style="cursor: pointer;">
+            Ver Barberos
+          </a>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="col-md-4">
+        <div class="feature-card text-center">
+          <div class="icon-box">
+            <img src="prem.png" alt="DistriLion">
+          </div>
+            <h4>DistriLion</h4>
+            <p>Distribuidora oficial de productos premium para barbería profesional.</p>
+            <a href="#" class="btn btn-warning btn-sm mt-2 rounded-pill px-3">
+             Ver productos
+            </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ESLOGAN Y RESERVA --> <!-- REVISAR INFORMACION, REVISAR BACKGROUD/SI PONER O NO -->
+<section class="cta-hero py-5">
+  <div class="container text-center">
+    <h1>Tu Estilo, <span>Nuestra Pasión</span></h1>
+    <h2 class="fw-bold mb-3">Transforma tu apariencia con nuestros servicios de barbería de alta calidad.</h2>
+    <p>Únete a miles de clientes satisfechos</p>
+    <a routerLink="/login" class="btn btn-warning px-4 py-2 rounded-pill fw-semibold">
+    Comienza Ahora
+    </a>
+  </div>
+</section>
+
+
+<!-- SERVICIOS -->
+<section class="services-section py-5">
+  <div class="container">
+
+    <h2 class="text-center fw-bold mb-5">Nuestros <span class="text-gold">Servicios</span></h2>
+
+    <div class="row align-items-center g-5">
+
+      <!-- LISTA -->
+      <div class="col-md-6">
+
+        <div class="service-item" (mouseenter)="showServiceSlide(0)" (mouseleave)="hideServiceSlide()">
+          <div class="service-info">
+            <span class="service-badge">Popular</span>
+            <h5>Corte Clásico</h5>
+            <p>Corte que nunca pasa de moda, ideal para cualquier ocasión.</p>
+          </div>
+          <span class="service-price">20.000 COP</span>
+        </div>
+
+        <div class="service-item" (mouseenter)="showServiceSlide(1)" (mouseleave)="hideServiceSlide()">
+          <div class="service-info">
+            <span class="service-badge badge-gold">Recomendado</span>
+            <h5>Corte + Barba</h5>
+            <p>Paquete completo que incluye corte de cabello y afeitado de barba.</p>
+          </div>
+          <span class="service-price">30.000 COP</span>
+        </div>
+
+        <div class="service-item" (mouseenter)="showServiceSlide(2)" (mouseleave)="hideServiceSlide()">
+          <div class="service-info">
+            <span class="service-badge badge-premium">Premium</span>
+            <h5>Corte Premium</h5>
+            <p>Corte de alta calidad con acabado perfecto para un estilo impecable.</p>
+          </div>
+          <span class="service-price">40.000 COP</span>
+        </div>
+
+        <div class="service-item" (mouseenter)="showServiceSlide(3)" (mouseleave)="hideServiceSlide()">
+          <div class="service-info">
+            <h5>Corte Infantil</h5>
+            <p>Corte especialmente diseñado para niños, con estilo y comodidad.</p>
+          </div>
+          <span class="service-price">25.000 COP</span>
+        </div>
+
+        <a routerLink="/service" class="btn btn-warning mt-4 px-4 fw-semibold rounded-pill">
+          Ver Menu
+        </a>
+
+      </div>
+
+      <!-- SLIDER -->
+      <div class="col-md-6">
+        <div class="service-slider">
+          <div class="service-slide active" style="background-image: url('bnb.png')"></div>
+          <div class="service-slide" style="background-image: url('bnb2.jpg')"></div>
+          <div class="service-slide" style="background-image: url('bnb3.jpg')"></div>
+          <div class="service-slide" style="background-image: url('bnb4.jpg')"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- BARBEROS -->
+<section class="barbers-section py-5" id="barbers">
+  <div class="container">
+
+    <h1 class="text-center fw-bold mb-2">Barberos <span class="text-gold">de Elite</span></h1>
+    <h3 class="text-center mb-5">Los mejores profesionales a tu servicio</h3>
+
+    <div class="row g-4">
+
+      <!-- BARBERO 1 --> <!-- REVISAR IMAGENES, SE NECESITAN CAMBIAR POR FOTOS REALES -->
+      <div class="col-md-3 col-sm-6">
+        <div class="barber-card">
+          <div class="img">
+            <span style="background-image: url('wal.png')"></span>
+            <span style="background-image: url('wal.png')"></span>
+            <span style="background-image: url('wal.png')"></span>
+            <span style="background-image: url('wal.png')"></span>
+          </div>
+          <div class="barber-content">
+            <h5>Walter Romero</h5>
+            <p>Especialista con más de 10 años de experiencia.</p>
+            <div class="barber-stars">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BARBERO 2 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="barber-card">
+          <div class="img">
+            <span style="background-image: url('stv.png')"></span>
+            <span style="background-image: url('stv.png')"></span>
+            <span style="background-image: url('stv.png')"></span>
+            <span style="background-image: url('stv.png')"></span>
+          </div>
+          <div class="barber-content">
+            <h5>Stiven Gonzalez</h5>
+            <p>Profesional en diseños de cabello modernos y estilizados.</p>
+            <div class="barber-stars">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BARBERO 3 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="barber-card">
+          <div class="img">
+            <span style="background-image: url('nem.png')"></span>
+            <span style="background-image: url('nem.png')"></span>
+            <span style="background-image: url('nem.png')"></span>
+            <span style="background-image: url('nem.png')"></span>
+          </div>
+          <div class="barber-content">
+            <h5>Niana Guerrero</h5>
+            <p>Especialista en tratamientos capilares y peinados creativos.</p>
+            <div class="barber-stars">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BARBERO 4 -->
+      <div class="col-md-3 col-sm-6">
+        <div class="barber-card">
+          <div class="img">
+            <span style="background-image: url('jor.png')"></span>
+            <span style="background-image: url('jor.png')"></span>
+            <span style="background-image: url('jor.png')"></span>
+            <span style="background-image: url('jor.png')"></span>
+          </div>
+          <div class="barber-content">
+            <h5>Jorge Martínez</h5>
+            <p>Experto en técnicas de corte y peinado para todos los estilos.</p>
+            <div class="barber-stars">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LOGO INTERMEDIO  -->
+<section class="badge-logo py-5">
+  <div class="container text-center">
+    <img src="newlogo.png" alt="logotipo" class="logo-badge"  height="140" loading="lazy">
+  </div>
+</section>
+
+<!-- UBICACION -->
+<section class="locate-section py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-2">Nuestra <span class="text-gold">Ubicación</span></h2>
+    <p class="text-center text-secondary mb-4">Visítanos en Bogotá</p>
+
+    <div class="row g-4 align-items-center">
+
+      <!-- INFO -->
+      <div class="col-md-4">
+        <div class="locate-card">
+          <div class="locate-item">
+            <i class="bi bi-geo-alt-fill"></i>
+            <div>
+              <h6>Dirección</h6>
+              <p>Carrera 98b sur #65-09, Conjunto Residencial Santa Mónica, Bosa El Recreo, Bogotá</p>
+            </div>
+          </div>
+          <div class="locate-item">
+            <i class="bi bi-clock-fill"></i>
+            <div>
+              <h6>Horario</h6>
+              <p>Domingo - Domingo: 9am - 9pm</p>
+            </div>
+          </div>
+          <div class="locate-item">
+            <i class="bi bi-telephone-fill"></i>
+            <div>
+              <h6>Teléfono</h6>
+              <p>+57 3123499989</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAPA -->
+      <div class="col-md-8">
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d592.7904407120419!2d-74.1999905063993!3d4.634888150887925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9de6ac7383e1%3A0x99e499b470fac5c8!2sALAMEDA%20SANTA%20MONICA%20ETAPA%20II!5e0!3m2!1sen!2sus!4v1780720528141!5m2!1sen!2sus"
+            width="100%"
+            height="350"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMENTARIOS -->
+ <section class="reviews-section py-5">
+    <div class="container">
+      <h2 class="text-center fw-bold mb-2">Comentarios</h2>
+      <p class="text-center text-secondary mb-5">Opiniones de nuestros clientes</p>
+
+      <div class="reviews-track-wrapper">
+        <div class="reviews-track">
+
+          <!--REVIEW 1-->
+          <div class="review-card">
+            <div class="reviews-stars mb-2">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p>"El mejor corter que me han hecho en años. El ambiente es increible y los barberos son muy profesionales.</p>
+            <span class="reviews-name">--Carlos M.</span>
+          </div>
+
+          <!--REVIEW 2-->
+          <div class="review-card">
+            <div class="reviews-stars mb-2">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p>"Reservé mi cita en segundos desde el celular. Llegué y me atendieron de inmediato. 100% recomendado."</p>
+            <span class="reviews-name">--Andrés Perez.</span>
+          </div>
+
+          <!--REVIEW 3-->
+          <div class="review-card">
+            <div class="reviews-stars mb-2">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p>"Mi barba quedó perfecta. El barbero supo exactamente lo que quería sin explicar mucho."</p>
+            <span class="reviews-name">--Juan Sebastian</span>
+          </div>
+
+          <!--REVIEW 4-->
+          <div class="review-card">
+            <div class="reviews-stars mb-2">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p>"Llevo 6 meses viniendo y nunca me han fallado. El ambiente es de lujo y los precios son justos."</p>
+            <span class="reviews-name">--Miguel Ramirez</span>
+          </div>
+
+          <!--REVIEW 5-->
+          <div class="review-card">
+            <div class="reviews-stars mb-2">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p>"Traje a mi hijo y quedó feliz con su corte. Los barberos son muy pacientes con los niños."</p>
+            <span class="reviews-name">--Roberto Ferney</span>
+          </div>
+          
+          <!--REVIEW 6-->
+          <div class="review-card">
+            <div class="reviews-stars mb-2">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p>"El afeitado premium fue una experiencia única. La toalla caliente y la navaja dejaron mi piel perfecta."</p>
+            <span class="reviews-name">--Diego Lopez</span>
+          </div>
+          
+          <!--REVIEW 7-->
+          <div class="review-card">
+            <div class="reviews-stars mb-2">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p>"Nunca pensé que un corte de cabello pudiera cambiarme tanto el look. Quedé impresionado."</p>
+            <span class="reviews-name">--Sebastian Gomez</span>
+          </div>
+          
+          <!--REVIEW 8-->
+          <div class="review-card">
+            <div class="reviews-stars mb-2">
+               <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p>"El local es muy limpio y moderno. Se nota que cuidan cada detalle. Volvería sin dudarlo."</p>
+            <span class="reviews-name">--Felipe Tores</span>
+          </div>
+          
+          <!--REVIEW 9-->
+          <div class="review-card">
+            <div class="reviews-stars mb-2">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            </div>
+            <p>"Vine por recomendación de un amigo y no me arrepiento. Ya agendé mi próxima cita."</p>
+            <span class="reviews-name">--Camilo Vargas.</span>
+          </div>
+
+          <!--DUPLICADOS PARA LOOP INFINITO-->
+        <div class="review-card">
+          <div class="reviews-stars mb-2">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
+          <p>"El mejor corte que me han hecho en años. El ambiente es increíble y los barberos son muy profesionales."</p>
+          <span class="reviews-name">— Carlos M.</span>
+        </div>
+
+        <div class="review-card">
+          <div class="reviews-stars mb-2">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
+          <p>"Reservé mi cita en segundos desde el celular. Llegué y me atendieron de inmediato. 100% recomendado."</p>
+          <span class="reviews-name">— Andrés P.</span>
+        </div>
+
+        <div class="review-card">
+          <div class="reviews-stars mb-2">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+          </div>
+          <p>"Mi barba quedó perfecta. El barbero supo exactamente lo que quería sin explicar mucho."</p>
+          <span class="reviews-name">— Juan S.</span>
+        </div>
+
+        </div>
+      </div>
+    </div>
+ </section>
+
+ <!--BOTON FLOTANTE-->
+ <a
+ href="https://wa.me/573123499989?text=Hola!%20Quiero%20información%20sobre%20los%20servicios%20de%20Lion%20Warrior%20Company"
+ target="_blank"
+ class="whatsapp-float">
+ <img src="newlogo.png" alt="LWC">
+ <span class="wsp-tooltip">¿En que te puedo ayudar?</span>
+ </a>
+
+</div>>

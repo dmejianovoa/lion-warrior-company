@@ -1,0 +1,187 @@
+/* HERO */
+.distri-hero {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.distri-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('C:\\Users\\damia\\OneDrive\\Desktop\\VS Code-Bar\\lion-project\\public\\distrilion.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.distri-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+}
+
+.distri-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  color: white;
+}
+
+.distri-hero-content h1 {
+  font-size: 46px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.distri-hero-content h1 span {
+  color: #d4a63c;
+}
+
+.distri-hero-subtitle {
+  color: #bdbdbd;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+}
+
+/* CATÁLOGO */
+.catalog-section {
+  background-color: #0a0a0a;
+}
+
+.product-card {
+  display: flex;
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+  transition: 0.3s;
+}
+
+.product-card.reverse {
+  flex-direction: row-reverse;
+}
+
+.product-card:hover {
+  border-color: #d4a63c;
+  transform: translateY(-4px);
+}
+
+.product-info {
+  flex: 1;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-info h5 {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.product-info p {
+  color: #bdbdbd;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  color: #d4a63c;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.product-img {
+  width: 40%;
+  background-size: cover;
+  background-position: center;
+  background-color: #2a2a2a; /* placeholder mientras no hay imagen real */
+}
+
+/* MARCAS */
+.brands-section {
+  background-color: #080808;
+  border-top: 1px solid #2a2a2a;
+}
+
+.brand-card {
+  background: #d4a63c;
+  color: #0a0a0a;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 30px 10px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.brand-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(212, 166, 60, 0.3);
+}
+
+/* SOBRE NOSOTROS */
+.about-section {
+  background-color: #252525b4;
+  border-top: 1px solid #2a2a2a;
+  background-position: center;
+
+}
+
+.about-section h2 span {
+  color: #d4a63c;
+}
+
+.about-section p {
+  color: #bdbdbd;
+  line-height: 1.7;
+}
+
+
+/* HORARIOS */
+.hours-section {
+  background-color: #080808;
+  border-top: 1px solid #2a2a2a;
+}
+
+.hours-card {
+  background: #161616;
+  border: 1px solid #d4a63c;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.hours-card p {
+  color: #bdbdbd;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.hours-card strong {
+  color: #d4a63c;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .product-card,
+  .product-card.reverse {
+    flex-direction: column;
+  }
+  .product-img {
+    width: 100%;
+    height: 180px;
+  }
+  .distri-hero-content h1 {
+    font-size: 32px;
+  }
+  .distri-hero-tag {
+    font-size: 20px;
+    letter-spacing: 3px;
+  }
+}

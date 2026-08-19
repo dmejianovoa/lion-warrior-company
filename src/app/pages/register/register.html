@@ -51,7 +51,7 @@
 
             <!--CONSTRASEÑA-->
             <div class="mb-3 password-box">
-                <input type="password" class="form-control custom-input" placeholder="Constraseña" id="password"
+                <input type="password" class="form-control custom-input" placeholder="Contraseña" id="password"
                 name="password" [(ngModel)]="password" required>
                 <i class="bi bi-eye password-toggle" (click)="togglePassword('password')"></i>
                 <small class="text-danger" *ngIf="!password">{{passwordError}}</small>
@@ -59,7 +59,7 @@
 
             <!-- REPETIR CONSTRASEÑA-->
             <div class="mb-3 password-box">
-                <input type="password" class="form-control custom-input" placeholder="Constraseña" id="confirm-password"
+                <input type="password" class="form-control custom-input" placeholder="Confirmar contraseña" id="confirm-password"
                 name="confirm-password" [(ngModel)]="confirmPassword" required>
                 <i class="bi bi-eye password-toggle" (click)="togglePassword('confirm-password')"></i>
                 <small class="text-secondary">minimo 8 caracteres</small>

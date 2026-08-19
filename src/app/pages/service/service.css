@@ -4,6 +4,8 @@
 .section-service {
     background-color: #080808;
     padding: 40px 0;
+    display: flex;
+    overflow: hidden;
 }
 
 .section-service .fw-bold {
@@ -18,7 +20,7 @@
 
 ._card-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     padding: 0 20px;
 }
@@ -169,6 +171,8 @@
     background-color: #080808;
     margin-bottom: 20px;
     padding: 40px 0;
+    display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 .section-service-vip h2{
@@ -399,7 +403,7 @@
 .ind-container {
     display: grid;
     justify-items: center;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
     padding: 0 20px;
 }

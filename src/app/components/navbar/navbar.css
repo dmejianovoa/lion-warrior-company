@@ -2,6 +2,7 @@
 /* BOTONES*/
 .navbar .nav-link {
     position: relative;
+    overflow: hidden;
     transition: 0.3s;
     padding-bottom: 5px;
 }
@@ -89,4 +90,35 @@
 .navbar-brand {
     position: static;
     transform: none;
+}
+
+.navbar-toggle-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #d4a63c;
+    font-size: 28px;
+}
+
+.mobile-menu {
+    display: none
+}
+
+@media (max-width: 900px) {
+  .navbar-toggle-btn {
+    display: block;
+  }
+
+  .nav-links-left,
+  .nav-links-right {
+    display: none; 
+  }
+
+  .navbar-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
 }

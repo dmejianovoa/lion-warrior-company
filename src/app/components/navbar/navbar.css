@@ -100,25 +100,3 @@
     font-size: 28px;
 }
 
-.mobile-menu {
-    display: none
-}
-
-@media (max-width: 900px) {
-  .navbar-toggle-btn {
-    display: block;
-  }
-
-  .nav-links-left,
-  .nav-links-right {
-    display: none; 
-  }
-
-  .navbar-grid {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-}

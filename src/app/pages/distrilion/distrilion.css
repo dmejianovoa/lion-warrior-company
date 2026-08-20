@@ -108,7 +108,7 @@
 /* MARCAS */
 .brands-section {
   background-color: #080808;
-  border-top: 1px solid #2a2a2a;
+  border-top: 1px solid #d4a63c;
 }
 
 .brand-card {
@@ -128,8 +128,7 @@
 
 /* SOBRE NOSOTROS */
 .about-section {
-  background-color: #252525b4;
-  border-top: 1px solid #2a2a2a;
+  border-top: 1px solid #d4a63c;
   background-position: center;
 
 }
@@ -143,27 +142,41 @@
   line-height: 1.7;
 }
 
+.img-about {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
 
 /* HORARIOS */
 .hours-section {
-  background-color: #080808;
+  background: linear-gradient(360deg, #d4a63c2c, #d4a63c75);
   border-top: 1px solid #2a2a2a;
 }
 
-.hours-card {
+.hours-section h2 {
+  font-weight: bold;
+  font-family: 'Cinzel', serif;
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.schedule-card {
   background: #161616;
   border: 1px solid #d4a63c;
   border-radius: 14px;
   padding: 20px;
 }
 
-.hours-card p {
+.schedule-card p {
   color: #bdbdbd;
   margin-bottom: 6px;
   font-size: 14px;
 }
 
-.hours-card strong {
+.schedule-card strong {
   color: #d4a63c;
   font-size: 18px;
 }

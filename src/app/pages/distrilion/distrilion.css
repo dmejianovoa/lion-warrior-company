@@ -21,7 +21,7 @@
 .distri-hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.65);
+  background: rgba(0, 0, 0, 0.65);
 }
 
 .distri-hero-content {
@@ -130,7 +130,6 @@
 .about-section {
   border-top: 1px solid #d4a63c;
   background-position: center;
-
 }
 
 .about-section h2 span {
@@ -148,7 +147,6 @@
   border-radius: 12px;
   margin-top: 20px;
 }
-
 
 /* HORARIOS */
 .hours-section {
@@ -197,4 +195,176 @@
     font-size: 20px;
     letter-spacing: 3px;
   }
+}
+
+/* BOTÓN FLOTANTE DEL CARRITO */
+.cart-toggle-btn {
+  position: fixed;
+  top: 825px;
+  right: 25px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #d4a63c;
+  border: none;
+  color: #0a0a0a;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 998;
+  box-shadow: 0 4px 20px rgba(212, 166, 60, 0.4);
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.cart-toggle-btn:hover {
+  transform: scale(1.08);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #e04a4a;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* PANEL DESLIZABLE DESDE ARRIBA */
+.cart-panel {
+  position: fixed;
+  width: 320px;
+  max-width: 90vw;
+  max-height: 70vh;
+  background: #0f0f0f;
+  border: 2px solid #d4a63c;
+  border-radius: 14px;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.6);
+  z-index: 999;
+  transform: scale(0.9);
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+  overflow-y: auto;
+}
+
+.cart-panel.open {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cart-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 1px solid #d4a63c;
+  cursor: grab;
+  user-select: none;
+}
+
+.cart-panel-header:active {
+  cursor: grabbing;
+}
+
+.cart-panel-header h5 {
+  color: whitesmoke;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  margin: 0;
+}
+
+.cart-close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.cart-panel-body {
+  padding: 15px 25px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #1a1a1a;
+  gap: 12px;
+}
+
+.cart-item-info h6 {
+  color: white;
+  margin: 0 0 4px 0;
+}
+
+.cart-item-price {
+  color: #d4a63c;
+  font-size: 14px;
+}
+
+.cart-item-qty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-item-qty button {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid #d4a63c;
+  background: transparent;
+  color: #d4a63c;
+  cursor: pointer;
+}
+
+.cart-item-qty span {
+  color: white;
+  min-width: 18px;
+  text-align: center;
+}
+
+.cart-item-remove {
+  background: none;
+  border: none;
+  color: #e04a4a;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.cart-empty {
+  color: #bdbdbd;
+
+  text-align: center;
+  padding: 30px 0;
+}
+
+.cart-panel-footer {
+  padding: 15px 25px 25px;
+  border-top: 1px solid #2a2a2a;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 18px;
+}
+
+.cart-total strong {
+  color: #d4a63c;
 }

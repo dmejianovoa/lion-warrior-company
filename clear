@@ -1,0 +1,59 @@
+[33mcommit 293b4416a7769b10985a42565cfc8a42690df0cf[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Damian Andres Mejia Novoa <damianmejia029@gmail.com>
+Date:   Wed Aug 19 22:28:06 2026 -0500
+
+    botones de servicio conectados con beunik
+
+[33mcommit cf9c0107bc417eefe325e32d99d2345822de26aa[m
+Author: Damian Andres Mejia Novoa <damianmejia029@gmail.com>
+Date:   Wed Aug 19 22:24:16 2026 -0500
+
+    creacion del carrito de compra - distrilion
+
+[33mcommit 9cc7983a3bcd60b3872a11d86b77750af97d416d[m
+Author: Damian Andres Mejia Novoa <damianmejia029@gmail.com>
+Date:   Wed Aug 19 20:38:15 2026 -0500
+
+    eliminacion temporal de menu desplegable en navbar
+
+[33mcommit 565cacfb5a9bff4b069445a1e48426ef2fc99ca7[m
+Author: Damian Andres Mejia Novoa <damianmejia029@gmail.com>
+Date:   Wed Aug 19 20:36:22 2026 -0500
+
+    arreglo div animate.enter en pages - eliminacion de class intermedio
+
+[33mcommit 2f49b6e55f00da34e7aec9f8fdf83c8914c2f812[m
+Author: Damian Andres Mejia Novoa <damianmejia029@gmail.com>
+Date:   Wed Aug 19 20:30:18 2026 -0500
+
+    arreglo linea 23 boton de whatsapp navbar-html
+
+[33mcommit dd66ff67b89e350164b02c47bdd37641af68f42a[m
+Author: Damian Andres Mejia Novoa <damianmejia029@gmail.com>
+Date:   Wed Aug 19 20:27:27 2026 -0500
+
+    creacion de ruta redirectTo en app.routes.ts
+
+[33mcommit 99b78ad2efef118dee94ce3f857f904a15b648de[m
+Author: Damian Andres Mejia Novoa <damianmejia029@gmail.com>
+Date:   Wed Aug 19 20:19:29 2026 -0500
+
+    Se modifico imagenes, y se arreglo componentes de diseño en distrilion.css, y se adiciono diseño al mismo page (distrilion)
+
+[33mcommit b0faa531b43d530a6280142e74d4d6a8635aa6cd[m
+Author: Damian Andres Mejia Novoa <damianmejia029@gmail.com>
+Date:   Tue Aug 18 23:56:58 2026 -0500
+
+    Se creo los componentes de Distrilion, se implementaron imagenes y se arreglaron problemas con los botones de retorno en Navbar. Se crearon los routerLinks pertinentes
+
+[33mcommit 56283fc1a3392bbdc2041da949362a22808bf8d5[m
+Author: Damian Andres Mejia Novoa <damianmejia029@gmail.com>
+Date:   Tue Aug 18 20:56:00 2026 -0500
+
+    Creacion de distrilion
+
+[33mcommit c0a53ae1bc13e720635a1bc849070ce9f0668e15[m
+Author: Damian Andres Mejia Novoa <damianmejia029@gmail.com>
+Date:   Thu Aug 13 19:45:24 2026 -0500
+
+    proyecto Lion Warrior Company

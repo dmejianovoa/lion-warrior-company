@@ -1,85 +1,132 @@
 <div animate.enter="page-fade-in">
-
-<div class="register-page">
-
-
+  <div class="register-page">
     <!--IZQUIERDA-->
     <div class="register-left">
-        <img src="newlogo.png" alt="Logo" class="register-logo">
-            <h1>Panel de <span>Registro</span></h1>
-            <p>Registro exclusivo para miembros de <strong> Lion Warrior Company.</strong> 
-                Se parte del la mejor barberia de Bogotá.</p>
+      <img src="newlogo.png" alt="Logo" class="register-logo" />
+      <h1>Panel de <span>Registro</span></h1>
+      <p>
+        Registro exclusivo para miembros de <strong> Lion Warrior Company.</strong> Se parte del la
+        mejor barberia de Bogotá.
+      </p>
     </div>
 
     <!-- DERECHA-->
     <div class="register-right">
-        <img src="lionmen.png" alt="Lion Warrior" class="lion-interactor">
-        <div class="register-box">
-            <!--TITULO-->
-            <h2 class="fw bold mb-1">Bienvenido a <span class="register-name">Lion Warrior Company </span> <i class="bi bi-star-fill"></i></h2>
-            <p class="text-secondary small mb-4">Ingresa la informacion para completar el registro</p>
-            
+      <img src="lionmen.png" alt="Lion Warrior" class="lion-interactor" />
+      <div class="register-box">
+        <!--TITULO-->
+        <h2 class="fw bold mb-1">
+          Bienvenido a <span class="register-name">Lion Warrior Company </span>
+          <i class="bi bi-star-fill"></i>
+        </h2>
+        <p class="text-secondary small mb-4">Ingresa la informacion para completar el registro</p>
 
-
-            <!--NOMBRE-->
-            <div class="mb-3">
-                <input type="text" class="form-control custom-input" placeholder="Nombre" 
-                name="name" id="name" [(ngModel)]="name" required>
-                <small class="text-danger" *ngIf="!name">{{nameError}}</small>
-            </div>
-
-            <!--APELLIDO-->
-            <div class="mb-3">
-                <input type="text" class="form-control custom-input" placeholder="Apellidos" 
-                name="lastname" id="lastname" [(ngModel)]="lastname" required>
-                <small class="text-danger" *ngIf="!lastname">{{lastnameError}}</small>
-            </div>
-
-            <!--TELEFONO-->
-            <div class="mb-3">
-                <input type="text" class="form-control custom-input" placeholder="300-000-0000" 
-                name="phone" id="phone" [(ngModel)]="phone" required>
-                <small class="text-danger" *ngIf="!phone">{{phoneError}}</small>
-            </div>
-
-            <!--CORREO-->
-            <div class="mb-3">
-                <input type="email" class="form-control custom-input" placeholder="ejemplo@gmail.com" 
-                name="email" id="email" [(ngModel)]="email" required>
-                <small class="text-danger" *ngIf="!email">{{emailError}}</small>
-            </div>
-
-            <!--CONSTRASEÑA-->
-            <div class="mb-3 password-box">
-                <input type="password" class="form-control custom-input" placeholder="Contraseña" id="password"
-                name="password" [(ngModel)]="password" required>
-                <i class="bi bi-eye password-toggle" (click)="togglePassword('password')"></i>
-                <small class="text-danger" *ngIf="!password">{{passwordError}}</small>
-            </div>
-
-            <!-- REPETIR CONSTRASEÑA-->
-            <div class="mb-3 password-box">
-                <input type="password" class="form-control custom-input" placeholder="Confirmar contraseña" id="confirm-password"
-                name="confirm-password" [(ngModel)]="confirmPassword" required>
-                <i class="bi bi-eye password-toggle" (click)="togglePassword('confirm-password')"></i>
-                <small class="text-secondary">minimo 8 caracteres</small>
-                <small class="text-danger" *ngIf="!confirmPassword">{{confirmPasswordError}}</small>
-            </div>
-
-            <!--REGISTRO-->
-            <div class="text-center mb-4">
-                <p class="small secondary"> 
-                    ¿Ya tienes cuenta?
-                    <a routerLink="/login" class="login-link">Inicia sesión</a>
-                </p> 
-            </div>
-
-            <!--BOTON-->
-            <button class="btn register-btn w-100 mb-3" (click)="onSubmit()">Registrarse</button>
+        <!--NOMBRE-->
+        <div class="mb-3">
+          <label for="name" class="visually-hidden">Nombre</label>
+          <input
+            type="text"
+            class="form-control custom-input"
+            placeholder="Nombre"
+            name="name"
+            id="name"
+            [(ngModel)]="name"
+            required
+          />
+          <small class="text-danger" *ngIf="!name">{{ nameError }}</small>
         </div>
-         <!-- BRAZO ENCIMA -->
-         <img src="lionmen3.png" alt="" class="lion-arm">
-    </div>
-</div>
 
+        <!--APELLIDO-->
+        <div class="mb-3">
+          <label for="lastname" class="visually-hidden">Apellidos</label>
+          <input
+            type="text"
+            class="form-control custom-input"
+            placeholder="Apellidos"
+            name="lastname"
+            id="lastname"
+            [(ngModel)]="lastname"
+            required
+          />
+          <small class="text-danger" *ngIf="!lastname">{{ lastnameError }}</small>
+        </div>
+
+        <!--TELEFONO-->
+        <div class="mb-3">
+          <label for="phone" class="visually-hidden">Teléfono</label>
+          <input
+            type="text"
+            class="form-control custom-input"
+            placeholder="300-000-0000"
+            name="phone"
+            id="phone"
+            [(ngModel)]="phone"
+            required
+          />
+          <small class="text-danger" *ngIf="!phone">{{ phoneError }}</small>
+        </div>
+
+        <!--CORREO-->
+        <div class="mb-3">
+          <label for="email" class="visually-hidden">Correo Electrónico</label>
+          <input
+            type="email"
+            class="form-control custom-input"
+            placeholder="ejemplo@gmail.com"
+            name="email"
+            id="email"
+            [(ngModel)]="email"
+            required
+          />
+          <small class="text-danger" *ngIf="!email">{{ emailError }}</small>
+        </div>
+
+        <!--CONSTRASEÑA-->
+        <div class="mb-3 password-box">
+          <label for="password" class="visually-hidden">Contraseña</label>
+          <input
+            type="password"
+            class="form-control custom-input"
+            placeholder="Contraseña"
+            id="password"
+            name="password"
+            [(ngModel)]="password"
+            required
+          />
+          <i class="bi bi-eye password-toggle" (click)="togglePassword('password')"></i>
+          <small class="text-danger" *ngIf="!password">{{ passwordError }}</small>
+        </div>
+
+        <!-- REPETIR CONSTRASEÑA-->
+        <div class="mb-3 password-box">
+          <label for="confirm-password" class="visually-hidden">Confirmar Contraseña</label>
+          <input
+            type="password"
+            class="form-control custom-input"
+            placeholder="Confirmar contraseña"
+            id="confirm-password"
+            name="confirm-password"
+            [(ngModel)]="confirmPassword"
+            required
+          />
+          <i class="bi bi-eye password-toggle" (click)="togglePassword('confirm-password')"></i>
+          <small class="text-secondary">minimo 8 caracteres</small>
+          <small class="text-danger" *ngIf="!confirmPassword">{{ confirmPasswordError }}</small>
+        </div>
+
+        <!--REGISTRO-->
+        <div class="text-center mb-4">
+          <p class="small secondary">
+            ¿Ya tienes cuenta?
+            <a routerLink="/login" class="login-link">Inicia sesión</a>
+          </p>
+        </div>
+
+        <!--BOTON-->
+        <button class="btn register-btn w-100 mb-3" (click)="onSubmit()">Registrarse</button>
+      </div>
+      <!-- BRAZO ENCIMA -->
+      <img src="lionmen3.png" alt="" class="lion-arm" />
+    </div>
+  </div>
 </div>

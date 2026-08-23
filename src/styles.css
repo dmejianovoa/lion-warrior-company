@@ -1,4 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+/* Accesibilidad: Foco de teclado */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+.form-check-input:focus-visible {
+  outline: 2p solid #d4a63c;
+  outline-offset: 2px;
+}
+
 body {
   background-color: #000;
   color: white;
@@ -18,8 +27,14 @@ body {
 }
 
 @keyframes page-fade-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .page-fade-in {

@@ -4,7 +4,7 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 .form-check-input:focus-visible {
-  outline: 2p solid #d4a63c;
+  outline: 2p solid #d4ba7c;
   outline-offset: 2px;
 }
 

@@ -9,5 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './navbar.css',
 })
 export class Navbar {
+  menuAbierto = false;
 }
-

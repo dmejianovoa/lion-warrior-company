@@ -1,10 +1,19 @@
 <nav class="navbar navbar-dark bg-black border-bottom border-dark py-3">
   <div class="container-fluid px-3 navbar-grid">
+    <!-- BOTON HAMBURGUESA (solo visible en movil) -->
+    <button class="navbar-toggle-btn" (click)="menuAbierto = !menuAbierto" aria-label="Abrir menú">
+      <i class="bi" [class.bi-list]="!menuAbierto" [class.bi-x]="menuAbierto"></i>
+    </button>
+
     <!-- IZQUIERDA -->
-    <div class="d-flex gap-3 justify-content-end pe-4 nv-links-left">
-      <a routerLink="/home" class="nav-link text-white">Barbería</a>
-      <a routerLink="/service" class="nav-link text-white">Servicios</a>
-      <a routerLink="/contact" class="nav-link text-white">Contactanos</a>
+    <div class="d-flex gap-3 justify-content-end pe-4 nv-links-left" [class.nv-open]="menuAbierto">
+      <a routerLink="/home" class="nav-link text-white" (click)="menuAbierto = false">Barbería</a>
+      <a routerLink="/service" class="nav-link text-white" (click)="menuAbierto = false"
+        >Servicios</a
+      >
+      <a routerLink="/contact" class="nav-link text-white" (click)="menuAbierto = false"
+        >Contactanos</a
+      >
     </div>
 
     <!-- LOGO CENTRO -->
@@ -19,10 +28,15 @@
     </a>
 
     <!-- DERECHA -->
-    <div class="d-flex align-items-center gap-3 ps-4 justify-content-between nv-links-right">
+    <div
+      class="d-flex align-items-center gap-3 ps-4 justify-content-between nv-links-right"
+      [class.nv-open]="menuAbierto"
+    >
       <div class="d-flex gap-3">
-        <a routerLink="/distrilion" class="nav-link text-white">DistriLion</a>
-        <a href="#" class="nav-link text-white">Joyeria</a>
+        <a routerLink="/distrilion" class="nav-link text-white" (click)="menuAbierto = false"
+          >DistriLion</a
+        >
+        <a href="#" class="nav-link text-white" (click)="menuAbierto = false">Joyeria</a>
         <a
           href="https://wa.me/573123499989?text=Hola!%20Quiero%20información%20sobre%20los%20servicios%20de%20Lion%20Warrior%20Company"
           target="_blank"
@@ -31,7 +45,7 @@
         >
       </div>
       <div class="icon-login">
-        <a tooltip="Iniciar sesión" class="icon" routerLink="/login">
+        <a tooltip="Iniciar sesión" class="icon" routerLink="/login" (click)="menuAbierto = false">
           <i class="bi bi-person-circle"></i>
         </a>
       </div>

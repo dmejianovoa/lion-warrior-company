@@ -28,7 +28,7 @@
   position: relative;
   z-index: 2;
   text-align: center;
-  font-family: 'Cinzel', serif;
+  font-family: Arial, Helvetica, sans-serif;
   color: white;
 }
 
@@ -156,7 +156,7 @@
 
 .hours-section h2 {
   font-weight: bold;
-  font-family: 'Cinzel', serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 36px;
   margin-bottom: 40px;
 }
@@ -280,7 +280,7 @@
 
 .cart-panel-header h5 {
   color: whitesmoke;
-  font-family: 'Cinzel', serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   margin: 0;
 }

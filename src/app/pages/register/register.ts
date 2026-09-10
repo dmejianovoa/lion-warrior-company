@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../services/user.service';
+import { User } from '../../model/user.model';
 @Component({
   selector: 'app-register',
   imports: [RouterLink, FormsModule, CommonModule],
@@ -9,7 +11,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './register.css',
 })
 export class Register implements OnInit, OnDestroy {
-
   // ---- Formulario ----
   name = '';
   lastname = '';
@@ -25,10 +26,17 @@ export class Register implements OnInit, OnDestroy {
   emailError = '';
   passwordError = '';
   confirmPasswordError = '';
-  
+
   // ---- Shake ----
   shake = false;
 
+  // ---- Mensaje de resultado de registro -----
+  registerError = '';
+
+  // ---- Constructor - Inyeccion de dependencias delUserservice
+  constructor(private userService: UserService) {}
+
+  // --- Metodos privados ---
   private isValidName(name: string): boolean {
     return name.trim().length > 0;
   }
@@ -50,9 +58,7 @@ export class Register implements OnInit, OnDestroy {
   private isValidPassword(password: string): boolean {
     const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
     return pattern.test(password);
-
   }
-
 
   private triggerShake() {
     this.shake = true;
@@ -90,7 +96,8 @@ export class Register implements OnInit, OnDestroy {
     }
 
     if (!this.isValidPassword(this.password)) {
-      this.passwordError = 'La contraseña debe tener al menos 8 caracteres, incluyendo letras y números.';
+      this.passwordError =
+        'La contraseña debe tener al menos 8 caracteres, incluyendo letras y números.';
       hasError = true;
     }
 
@@ -103,6 +110,31 @@ export class Register implements OnInit, OnDestroy {
       this.triggerShake();
       return;
     }
+
+    //Validacion completa - Respuesta del API
+    const newUser: User = {
+      userName: this.name,
+      lastName: this.lastname,
+      email: this.email,
+      phoneNumber: this.phone,
+      passwordHash: this.password, // ver nota arriba sobre hashing real
+      userRole: 'client', // registro público siempre crea un cliente
+    };
+
+    //Llamar servidor: createUser() devuelve Observable - Hacemos suscribe
+    this.userService.createUser(newUser).subscribe({
+      next: (createdUser) => {
+        //Se ejecuta cuando la API responde 201 Created
+        console.log('Usuario creado: ', createdUser);
+      },
+      error: (err) => {
+        //Responde si la API ejecuta error 404 0 400(email duplicado)
+        console.log('Error al registrar', err);
+        this.registerError =
+          err.error?.message || 'No se pudo completar el registro. Intentelo de nuevo';
+        this.triggerShake();
+      },
+    });
   }
 
   togglePassword(id: string) {
@@ -113,7 +145,7 @@ export class Register implements OnInit, OnDestroy {
       icon.classList.replace('bi-eye', 'bi-eye-slash');
     } else {
       input.type = 'password';
-      icon.classList.replace('bi-eye-slash', 'bi-eye')
+      icon.classList.replace('bi-eye-slash', 'bi-eye');
     }
   }
 
@@ -127,5 +159,3 @@ export class Register implements OnInit, OnDestroy {
     if (icon) icon.style.display = 'flex';
   }
 }
-
-

@@ -110,9 +110,6 @@
     order: 1;
   }
 
-  .container-fluid > .navbar-grid {
-    display: flex;
-  }
   .navbar-grid {
     display: flex;
     grid-template-columns: 1fr;

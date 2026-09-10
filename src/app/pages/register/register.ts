@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
 import { User } from '../../model/user.model';
 @Component({
   selector: 'app-register',
@@ -123,11 +124,11 @@ export class Register implements OnInit, OnDestroy {
 
     //Llamar servidor: createUser() devuelve Observable - Hacemos suscribe
     this.userService.createUser(newUser).subscribe({
-      next: (createdUser) => {
+      next: (createdUser: User) => {
         //Se ejecuta cuando la API responde 201 Created
         console.log('Usuario creado: ', createdUser);
       },
-      error: (err) => {
+      error: (err: HttpErrorResponse) => {
         //Responde si la API ejecuta error 404 0 400(email duplicado)
         console.log('Error al registrar', err);
         this.registerError =

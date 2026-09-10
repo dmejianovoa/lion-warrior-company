@@ -67,6 +67,7 @@ export class Register implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    console.log('onSubmit ejecutado');
     this.nameError = '';
     this.lastnameError = '';
     this.phoneError = '';
@@ -108,6 +109,14 @@ export class Register implements OnInit, OnDestroy {
     }
 
     if (hasError) {
+      console.log('Validación falló:', {
+        nameError: this.nameError,
+        lastnameError: this.lastnameError,
+        phoneError: this.phoneError,
+        emailError: this.emailError,
+        passwordError: this.passwordError,
+        confirmPasswordError: this.confirmPasswordError,
+      }); // 👈 temporal, para debug
       this.triggerShake();
       return;
     }

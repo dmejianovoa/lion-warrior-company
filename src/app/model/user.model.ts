@@ -2,7 +2,9 @@
 export interface User {
   idUser?: number;
   userName: string;
+  lastName: string;
   email: string;
+  phoneNumber: string;
   passwordHash?: string;
   userRole: 'admin' | 'barber' | 'client';
 }

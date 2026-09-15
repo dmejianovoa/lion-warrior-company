@@ -47,7 +47,7 @@ export class Register implements OnInit, OnDestroy {
   }
 
   private isValidPhone(phone: string): boolean {
-    const pattern = /^\d{3}-\d{3}-\d{4}$/;
+    const pattern = /^\d{3}\d{3}\d{4}$/;
     return pattern.test(phone);
   }
 

@@ -12,7 +12,6 @@ import { User } from '../../model/user.model';
   styleUrl: './register.css',
 })
 export class Register implements OnInit, OnDestroy {
-  // ---- Formulario ----
   name = '';
   lastname = '';
   phone = '';
@@ -20,7 +19,6 @@ export class Register implements OnInit, OnDestroy {
   password = '';
   confirmPassword = '';
 
-  // ---- Errores ----
   nameError = '';
   lastnameError = '';
   phoneError = '';
@@ -28,34 +26,25 @@ export class Register implements OnInit, OnDestroy {
   passwordError = '';
   confirmPasswordError = '';
 
-  // ---- Shake ----
   shake = false;
-
-  // ---- Mensaje de resultado de registro -----
   registerError = '';
 
-  // ---- Constructor - Inyeccion de dependencias delUserservice
   constructor(private userService: UserService) {}
 
-  // --- Metodos privados ---
   private isValidName(name: string): boolean {
     return name.trim().length > 0;
   }
-
   private isValidLastname(lastname: string): boolean {
     return lastname.trim().length > 0;
   }
-
   private isValidPhone(phone: string): boolean {
-    const pattern = /^\d{3}\d{3}\d{4}$/;
+    const pattern = /^\d{3}-\d{3}-\d{4}$/;
     return pattern.test(phone);
   }
-
   private isValidEmail(email: string): boolean {
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return pattern.test(email);
   }
-
   private isValidPassword(password: string): boolean {
     const pattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
     return pattern.test(password);
@@ -66,79 +55,68 @@ export class Register implements OnInit, OnDestroy {
     setTimeout(() => (this.shake = false), 500);
   }
 
+  validateName() {
+    this.nameError = this.isValidName(this.name) ? '' : 'El nombre es obligatorio.';
+  }
+  validateLastname() {
+    this.lastnameError = this.isValidLastname(this.lastname) ? '' : 'El apellido es obligatorio.';
+  }
+  validatePhone() {
+    this.phoneError = this.isValidPhone(this.phone)
+      ? ''
+      : 'El teléfono debe tener el formato 300-000-0000.';
+  }
+  validateEmail() {
+    this.emailError = this.isValidEmail(this.email) ? '' : 'El correo no tiene un formato válido.';
+  }
+  validatePassword() {
+    this.passwordError = this.isValidPassword(this.password)
+      ? ''
+      : 'La contraseña debe tener al menos 8 caracteres, incluyendo letras y números.';
+    if (this.confirmPassword) {
+      this.validateConfirmPassword();
+    }
+  }
+  validateConfirmPassword() {
+    this.confirmPasswordError =
+      this.password === this.confirmPassword ? '' : 'Las contraseñas no coinciden.';
+  }
+
   onSubmit() {
-    console.log('onSubmit ejecutado');
-    this.nameError = '';
-    this.lastnameError = '';
-    this.phoneError = '';
-    this.emailError = '';
-    this.passwordError = '';
-    this.confirmPasswordError = '';
+    this.validateName();
+    this.validateLastname();
+    this.validatePhone();
+    this.validateEmail();
+    this.validatePassword();
+    this.validateConfirmPassword();
 
-    let hasError = false;
-
-    if (!this.isValidName(this.name)) {
-      this.nameError = 'El nombre es obligatorio.';
-      hasError = true;
-    }
-
-    if (!this.isValidLastname(this.lastname)) {
-      this.lastnameError = 'El apellido es obligatorio.';
-      hasError = true;
-    }
-
-    if (!this.isValidPhone(this.phone)) {
-      this.phoneError = 'El teléfono debe tener el formato 300-000-0000.';
-      hasError = true;
-    }
-
-    if (!this.isValidEmail(this.email)) {
-      this.emailError = 'El correo no tiene un formato válido.';
-      hasError = true;
-    }
-
-    if (!this.isValidPassword(this.password)) {
-      this.passwordError =
-        'La contraseña debe tener al menos 8 caracteres, incluyendo letras y números.';
-      hasError = true;
-    }
-
-    if (this.password !== this.confirmPassword) {
-      this.confirmPasswordError = 'Las contraseñas no coinciden.';
-      hasError = true;
-    }
+    const hasError =
+      !!this.nameError ||
+      !!this.lastnameError ||
+      !!this.phoneError ||
+      !!this.emailError ||
+      !!this.passwordError ||
+      !!this.confirmPasswordError;
 
     if (hasError) {
-      console.log('Validación falló:', {
-        nameError: this.nameError,
-        lastnameError: this.lastnameError,
-        phoneError: this.phoneError,
-        emailError: this.emailError,
-        passwordError: this.passwordError,
-        confirmPasswordError: this.confirmPasswordError,
-      }); // 👈 temporal, para debug
       this.triggerShake();
       return;
     }
 
-    //Validacion completa - Respuesta del API
     const newUser: User = {
       userName: this.name,
       lastName: this.lastname,
       email: this.email,
       phoneNumber: this.phone,
-      passwordHash: this.password, // ver nota arriba sobre hashing real
-      userRole: 'client', // registro público siempre crea un cliente
+      passwordHash: this.password,
+      userRole: 'client',
     };
 
-    //Llamar servidor: createUser() devuelve Observable - Hacemos suscribe
     this.userService.createUser(newUser).subscribe({
       next: (createdUser: User) => {
-        //Se ejecuta cuando la API responde 201 Created
         console.log('Usuario creado: ', createdUser);
       },
       error: (err: HttpErrorResponse) => {
-        //Responde si la API ejecuta error 404 0 400(email duplicado)
         console.log('Error al registrar', err);
         this.registerError =
           err.error?.message || 'No se pudo completar el registro. Intentelo de nuevo';

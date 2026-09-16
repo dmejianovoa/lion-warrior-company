@@ -227,6 +227,14 @@
   margin-top: 2px;
 }
 
+.text-success {
+  display: block;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-top: 2px;
+  color: #0ca113;
+}
+
 .custom-input.is-invalid {
   border-color: #dc3545 !important;
 }

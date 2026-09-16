@@ -142,7 +142,7 @@ export class Register implements OnInit, OnDestroy {
         console.log('Usuario creado: ', createdUser);
         this.registerSuccess = '¡Usuario registrado con éxito! Ya puedes iniciar sesión.';
         console.log('registerSuccess ahora es:', this.registerSuccess, 'instancia:', this);
-        this.cdr.detectChanges();
+        this.cdr.detectChanges(); //forzar refresco de vista
 
         //Limpia formulario despues de completado
         this.name = '';
@@ -158,9 +158,8 @@ export class Register implements OnInit, OnDestroy {
       },
       error: (err: HttpErrorResponse) => {
         console.log('Error al registrar', err);
-        this.registerError =
-          err.error?.message || 'No se pudo completar el registro. Intentelo de nuevo';
-        this.cdr.detectChanges();
+        this.registerError = err.error?.message || 'Usuario ya registrado. Intentalo de nuevo ';
+        this.cdr.detectChanges(); //forzar refresco de vista
         this.triggerShake();
       },
     });

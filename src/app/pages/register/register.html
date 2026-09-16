@@ -31,9 +31,10 @@
             name="name"
             id="name"
             [(ngModel)]="name"
+            (ngModelChange)="validateName()"
             required
           />
-          <small class="text-danger" *ngIf="!nameError">{{ nameError }}</small>
+          <small class="text-danger" *ngIf="nameError">{{ nameError }}</small>
         </div>
 
         <!--APELLIDO-->
@@ -46,9 +47,10 @@
             name="lastname"
             id="lastname"
             [(ngModel)]="lastname"
+            (ngModelChange)="validateLastname()"
             required
           />
-          <small class="text-danger" *ngIf="!lastnameError">{{ lastnameError }}</small>
+          <small class="text-danger" *ngIf="lastnameError">{{ lastnameError }}</small>
         </div>
 
         <!--TELEFONO-->
@@ -57,13 +59,15 @@
           <input
             type="text"
             class="form-control custom-input"
-            placeholder="300-000-0000"
+            placeholder="300 000 0000"
+            maxlength="12"
             name="phone"
             id="phone"
             [(ngModel)]="phone"
+            (ngModelChange)="onPhoneInput()"
             required
           />
-          <small class="text-danger" *ngIf="!phoneError">{{ phoneError }}</small>
+          <small class="text-danger" *ngIf="phoneError">{{ phoneError }}</small>
         </div>
 
         <!--CORREO-->
@@ -76,9 +80,10 @@
             name="email"
             id="email"
             [(ngModel)]="email"
+            (ngModelChange)="validateEmail()"
             required
           />
-          <small class="text-danger" *ngIf="!emailError">{{ emailError }}</small>
+          <small class="text-danger" *ngIf="emailError">{{ emailError }}</small>
         </div>
 
         <!--CONSTRASEÑA-->
@@ -91,10 +96,11 @@
             id="password"
             name="password"
             [(ngModel)]="password"
+            (ngModelChange)="validatePassword()"
             required
           />
           <i class="bi bi-eye password-toggle" (click)="togglePassword('password')"></i>
-          <small class="text-danger" *ngIf="!passwordError">{{ passwordError }}</small>
+          <small class="text-danger" *ngIf="passwordError">{{ passwordError }}</small>
         </div>
 
         <!-- REPETIR CONSTRASEÑA-->
@@ -107,13 +113,12 @@
             id="confirm-password"
             name="confirm-password"
             [(ngModel)]="confirmPassword"
+            (ngModelChange)="validateConfirmPassword()"
             required
           />
           <i class="bi bi-eye password-toggle" (click)="togglePassword('confirm-password')"></i>
           <small class="text-secondary">minimo 8 caracteres</small>
-          <small class="text-danger" *ngIf="!confirmPasswordError">{{
-            confirmPasswordError
-          }}</small>
+          <small class="text-danger" *ngIf="confirmPasswordError">{{ confirmPasswordError }}</small>
         </div>
 
         <!--REGISTRO-->
@@ -124,8 +129,8 @@
           </p>
         </div>
 
-        <!--ERROR GENERAL DE REGISTRO-->
-        <p class="text-danger text-center small mb-3" *ngif="!registerError">{{ registerError }}</p>
+        <!--ERROR GENERAL DE REGISTRO (ej. email duplicado)-->
+        <p class="text-danger text-center small mb-3" *ngIf="registerError">{{ registerError }}</p>
 
         <!--BOTON-->
         <button class="btn register-btn w-100 mb-3" (click)="onSubmit()">Registrarse</button>

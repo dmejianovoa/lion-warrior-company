@@ -38,7 +38,7 @@ export class Register implements OnInit, OnDestroy {
     return lastname.trim().length > 0;
   }
   private isValidPhone(phone: string): boolean {
-    const pattern = /^\d{3}-\d{3}-\d{4}$/;
+    const pattern = /^\d{3} \d{3} \d{4}$/;
     return pattern.test(phone);
   }
   private isValidEmail(email: string): boolean {
@@ -61,11 +61,29 @@ export class Register implements OnInit, OnDestroy {
   validateLastname() {
     this.lastnameError = this.isValidLastname(this.lastname) ? '' : 'El apellido es obligatorio.';
   }
+
+  onPhoneInput() {
+    //Elimina digitos que no sean numeros
+    let digits = this.phone.replace(/\D/g, '').slice(0, 10);
+
+    //Reconstruye el texto insertado
+    let formatted = digits;
+    if (digits.length > 6) {
+      formatted = `${digits.slice(0, 3)} ${digits.slice(3, 6)} ${digits.slice(6)}`;
+    } else if (digits.length < 3) {
+      formatted = `${digits.slice(0, 3)} ${digits.slice(3)}`;
+    }
+
+    this.phone = formatted;
+    this.validatePhone();
+  }
+
   validatePhone() {
     this.phoneError = this.isValidPhone(this.phone)
       ? ''
-      : 'El teléfono debe tener el formato 300-000-0000.';
+      : 'El telefono debe tener el formato 300 000 0000.';
   }
+
   validateEmail() {
     this.emailError = this.isValidEmail(this.email) ? '' : 'El correo no tiene un formato válido.';
   }

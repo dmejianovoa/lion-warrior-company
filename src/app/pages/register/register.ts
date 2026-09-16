@@ -6,6 +6,7 @@ import { UserService } from '../../services/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { User } from '../../model/user.model';
 import { Router } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-register',
   imports: [RouterLink, FormsModule, CommonModule],
@@ -34,6 +35,7 @@ export class Register implements OnInit, OnDestroy {
   constructor(
     private userService: UserService,
     private router: Router,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   private isValidName(name: string): boolean {
@@ -139,6 +141,8 @@ export class Register implements OnInit, OnDestroy {
       next: (createdUser: User) => {
         console.log('Usuario creado: ', createdUser);
         this.registerSuccess = '¡Usuario registrado con éxito! Ya puedes iniciar sesión.';
+        console.log('registerSuccess ahora es:', this.registerSuccess, 'instancia:', this);
+        this.cdr.detectChanges();
 
         //Limpia formulario despues de completado
         this.name = '';
@@ -150,12 +154,13 @@ export class Register implements OnInit, OnDestroy {
 
         setTimeout(() => {
           this.router.navigate(['/login']);
-        }, 2500);
+        }, 8000);
       },
       error: (err: HttpErrorResponse) => {
         console.log('Error al registrar', err);
         this.registerError =
           err.error?.message || 'No se pudo completar el registro. Intentelo de nuevo';
+        this.cdr.detectChanges();
         this.triggerShake();
       },
     });

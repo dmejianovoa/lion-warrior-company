@@ -28,6 +28,7 @@ export class Register implements OnInit, OnDestroy {
 
   shake = false;
   registerError = '';
+  registerSuccess = '';
 
   constructor(private userService: UserService) {}
 
@@ -133,6 +134,14 @@ export class Register implements OnInit, OnDestroy {
     this.userService.createUser(newUser).subscribe({
       next: (createdUser: User) => {
         console.log('Usuario creado: ', createdUser);
+        this.registerSuccess = '¡Usuario registrado con éxito! Ya puedes iniciar sesión.';
+
+        this.name = '';
+        this.lastname = '';
+        this.phone = '';
+        this.email = '';
+        this.password = '';
+        this.confirmPassword = '';
       },
       error: (err: HttpErrorResponse) => {
         console.log('Error al registrar', err);

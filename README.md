@@ -1,59 +1,56 @@
-# StyleProyect
+# Lion Warrior Company - Front-end
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.13.
+Diseño front-end del sitio web de la barbería Lion Warrior Company.
+Evidencia GA6-220501096-AA4-EV03 | SENA - Tecnólogo en Análisis y Desarrollo de Software | Ficha 3235899
 
-## Development server
+## Tecnologías aplicadas
 
-To start a local development server, run:
+| Tecnología | Dónde se encuentra                                                                          |
+| ---------- | ------------------------------------------------------------------------------------------- |
+| HTML       | Plantillas de cada componente: `src/app/**/*.html`                                          |
+| CSS        | Estilos por componente (`*.css`), estilos globales (`src/styles.css`) y Bootstrap           |
+| JavaScript | Lógica de interacción en los archivos `*.ts` (TypeScript, que Angular compila a JavaScript) |
+
+El proyecto usa Angular como framework, el mismo componente formativo trabajado en el programa.
+
+## Cómo ejecutar el proyecto
+
+Requisitos: Node.js y npm instalados.
 
 ```bash
+npm install
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Luego abrir `http://localhost:4200/` en el navegador.
+(Si `ng` no se reconoce: `npx ng serve`).
 
-## Code scaffolding
+## Estructura
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+src/app/
+├── components/   → navbar y footer (reutilizables en todas las páginas)
+├── pages/        → home, login, register, service, contact, distrilion
+├── app.routes.ts → rutas de navegación
+└── app.html      → navbar + router-outlet + footer
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Funcionalidades por pantalla
 
-```bash
-ng generate --help
-```
+- **Home:** carrusel de imágenes con cambio automático y navegación manual.
+- **Login / Register:** formularios con validación (campos obligatorios, formato de correo, teléfono y contraseña) y mensajes de error visibles.
+- **Service:** catálogo de servicios de la barbería.
+- **Contact:** información de contacto.
+- **DistriLion:** módulo de distribuidor con carrito de compra arrastrable.
+- **Navbar / Footer:** presentes en todas las páginas, con enlaces a cada sección.
 
-## Building
+## Usabilidad y diseño
 
-To build the project run:
+- principios de usabilidad aplicaDOS, tomados de evidencias anteriores
+- Diseño adaptable a distintos tamaños de pantalla (Bootstrap y media queries).
+- Navegación consistente mediante componentes reutilizables.
+- Retroalimentación al usuario en los formularios (mensajes de error claros).
 
-```bash
-ng build
-```
+## GitHub
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+ver https://github.com/dmejianovoa/lion-warrior-company.git

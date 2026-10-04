@@ -46,7 +46,6 @@ src/app/
 
 ## Usabilidad y diseño
 
-- principios de usabilidad aplicaDOS, tomados de evidencias anteriores
 - Diseño adaptable a distintos tamaños de pantalla (Bootstrap y media queries).
 - Navegación consistente mediante componentes reutilizables.
 - Retroalimentación al usuario en los formularios (mensajes de error claros).

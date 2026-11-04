@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../model/user.model';
+import { environment } from '../../environments/environment';
 
-//@Injectable con providedIn: 'root' registro de servico como singleton
+//@Injectable con providedIn: 'root' registro de servicios como singleton
 //Disponible en toda la aplicacion
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  // URL de la API para usuarios
-  private apiUrl = 'http://localhost:8080/api/users';
+  // URL de la API para usuarios con URL desplegado en Render
+  private apiUrl = `${environment.apiUrl}/api/users`;
 
-  // Inyeccion de dependencias del HttpClient con contructor ya configurado
+  // Inyeccion de dependencias del HttpClient con constructor ya configurado
   constructor(private http: HttpClient) {}
 
   // Metodo para obtener todos los usuarios

@@ -144,7 +144,7 @@ export class Register implements OnInit, OnDestroy {
         console.log('registerSuccess ahora es:', this.registerSuccess, 'instancia:', this);
         this.cdr.detectChanges(); //forzar refresco de vista
 
-        //Limpia formulario despues de completado
+        //Limpia formulario despues de completado|
         this.name = '';
         this.lastname = '';
         this.phone = '';

@@ -18,6 +18,12 @@ export interface RegisterRequest {
   password: string;
 }
 
+//Datos que espera POST /api/auth/login (refleja LoginRequest del backend)
+export interface LoginRequest {
+  email: string;
+  password: string;
+}
+
 // Respuesta de los endpoints de autenticación (refleja AuthResponse del backend)
 export interface AuthResponse {
   message: string;

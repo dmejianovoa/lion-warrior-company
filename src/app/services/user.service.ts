@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../model/user.model';
 import { RegisterRequest } from '../model/user.model';
+import { LoginRequest } from '../model/user.model';
 import { AuthResponse } from '../model/user.model';
 import { environment } from '../../environments/environment';
 
@@ -42,5 +43,12 @@ export class UserService {
   //Metodo para eliminar el usuario
   deleteUser(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  // --------------------------------------------------------
+
+  //Metodo de inicio de sesion
+  login(request: LoginRequest): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.authUrl}/login`, request);
   }
 }

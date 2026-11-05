@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { User } from '../../model/user.model';
+import { AuthResponse, RegisterRequest, User } from '../../model/user.model';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 @Component({
@@ -128,21 +128,19 @@ export class Register implements OnInit, OnDestroy {
       return;
     }
 
-    const newUser: User = {
+    const newUser: RegisterRequest = {
       userName: this.name,
       lastName: this.lastname,
       email: this.email,
       phoneNumber: this.phone,
-      passwordHash: this.password,
-      userRole: 'client',
+      password: this.password,
     };
 
-    this.userService.createUser(newUser).subscribe({
-      next: (createdUser: User) => {
-        console.log('Usuario creado: ', createdUser);
+    this.userService.register(newUser).subscribe({
+      next: (res: AuthResponse) => {
+        console.log('Usuario creado: ', res);
         this.registerSuccess = '¡Usuario registrado con éxito! Ya puedes iniciar sesión.';
         console.log('registerSuccess ahora es:', this.registerSuccess, 'instancia:', this);
-        this.cdr.detectChanges(); //forzar refresco de vista
 
         //Limpia formulario despues de completado|
         this.name = '';
@@ -151,6 +149,8 @@ export class Register implements OnInit, OnDestroy {
         this.email = '';
         this.password = '';
         this.confirmPassword = '';
+
+        this.cdr.detectChanges(); //forzar refresco de vista
 
         setTimeout(() => {
           this.router.navigate(['/login']);

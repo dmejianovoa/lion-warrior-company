@@ -8,3 +8,18 @@ export interface User {
   passwordHash?: string;
   userRole: 'admin' | 'barber' | 'client';
 }
+
+// Datos que espera POST /api/auth/register (refleja RegisterRequest del backend)
+export interface RegisterRequest {
+  userName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  password: string;
+}
+
+// Respuesta de los endpoints de autenticación (refleja AuthResponse del backend)
+export interface AuthResponse {
+  message: string;
+  user: User;
+}

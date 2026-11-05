@@ -2,14 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../model/user.model';
+import { RegisterRequest } from '../model/user.model';
+import { AuthResponse } from '../model/user.model';
 import { environment } from '../../environments/environment';
 
 //@Injectable con providedIn: 'root' registro de servicios como singleton
 //Disponible en toda la aplicacion
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  // URL de la API para usuarios con URL desplegado en Render
+  // URL base de usuarios (consultar, actualizar y eliminar)
   private apiUrl = `${environment.apiUrl}/api/users`;
+
+  // URL base de autenticación (registro e inicio de sesión)
+  private authUrl = `${environment.apiUrl}/api/auth`;
 
   // Inyeccion de dependencias del HttpClient con constructor ya configurado
   constructor(private http: HttpClient) {}
@@ -25,8 +30,8 @@ export class UserService {
   }
 
   //Metodo para crear un usuario
-  createUser(user: User): Observable<User> {
-    return this.http.post<User>(this.apiUrl, user);
+  register(request: RegisterRequest): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.authUrl}/register`, request);
   }
 
   //Metodo para actualizar un usuario

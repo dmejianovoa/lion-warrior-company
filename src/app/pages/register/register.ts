@@ -108,6 +108,10 @@ export class Register implements OnInit, OnDestroy {
   }
 
   onSubmit() {
+    // Limpia mensajes de intentos anteriores
+    this.registerError = '';
+    this.registerSuccess = '';
+
     this.validateName();
     this.validateLastname();
     this.validatePhone();
@@ -129,19 +133,15 @@ export class Register implements OnInit, OnDestroy {
     }
 
     const newUser: RegisterRequest = {
-      userName: this.name,
-      lastName: this.lastname,
-      email: this.email,
+      userName: this.name.trim(),
+      lastName: this.lastname.trim(),
+      email: this.email.trim(),
       phoneNumber: this.phone,
       password: this.password,
     };
 
     this.userService.register(newUser).subscribe({
       next: (res: AuthResponse) => {
-        console.log('Usuario creado: ', res);
-        this.registerSuccess = '¡Usuario registrado con éxito! Ya puedes iniciar sesión.';
-        console.log('registerSuccess ahora es:', this.registerSuccess, 'instancia:', this);
-
         //Limpia formulario despues de completado|
         this.name = '';
         this.lastname = '';
@@ -157,8 +157,7 @@ export class Register implements OnInit, OnDestroy {
         }, 8000);
       },
       error: (err: HttpErrorResponse) => {
-        console.log('Error al registrar', err);
-        this.registerError = err.error?.message || 'Usuario ya registrado. Intentalo de nuevo ';
+        this.registerError = err.error?.message || '';
         this.cdr.detectChanges(); //forzar refresco de vista
         this.triggerShake();
       },

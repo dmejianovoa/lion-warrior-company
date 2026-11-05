@@ -1,16 +1,19 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { LoginRequest } from '../../model/user.model';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ChangeDetectorRef } from '@angular/core';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
   imports: [RouterLink, FormsModule, CommonModule],
   templateUrl: './login.html',
-  styleUrl: './login.css'
+  styleUrl: './login.css',
 })
 export class Login implements OnInit, OnDestroy {
-
   // ---- Formulario ----
   email = '';
   password = '';
@@ -22,6 +25,13 @@ export class Login implements OnInit, OnDestroy {
 
   // ---- Shake ----
   shake = false;
+
+  // Inyeccion de dependencias: servicio de usuarios, navegacion y refresco de vista
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   //OJO DE CONTRASEÑA OPEN/CLOSE
   togglePassword(id: string) {
@@ -71,16 +81,26 @@ export class Login implements OnInit, OnDestroy {
       return;
     }
 
-    // ---- Conexión real al backend cuando esté lista ----
-    const credencialesValidas = false;
+    // ---- Conexión real al backend con API ----
+    const credentials: LoginRequest = {
+      email: this.email.trim(),
+      password: this.password,
+    };
 
-    if (!credencialesValidas) {
-      this.loginError = 'Correo o contraseña incorrectos.';
-      this.triggerShake();
-      return;
-    }
-
-    // this.router.navigate(['/dashboard']);
+    this.userService.login(credentials).subscribe({
+      next: () => {
+        this.router.navigate(['/home']);
+      },
+      error: (err: HttpErrorResponse) => {
+        // 401: credenciales incorrectas / 400: datos faltantes / otros: servidor
+        this.loginError =
+          err.status === 401 || err.status === 400
+            ? 'Correo o contraseña incorrecta'
+            : 'No se puede conectar con el servidor. Intentalo de nuevo.';
+        this.cdr.detectChanges();
+        this.triggerShake();
+      },
+    });
   }
 
   ngOnInit() {

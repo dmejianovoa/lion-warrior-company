@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { LoginRequest } from '../../model/user.model';
+import { LoginRequest } from '../../model/login.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectorRef } from '@angular/core';
 import { UserService } from '../../services/user.service';

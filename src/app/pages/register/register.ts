@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { AuthResponse, RegisterRequest, User } from '../../model/user.model';
+import { AuthResponse, User } from '../../model/user.model';
+import { RegisterRequest } from '../../model/register.model';
 import { Router } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 @Component({

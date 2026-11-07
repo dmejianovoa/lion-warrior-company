@@ -64,6 +64,8 @@
     <div class="container">
       <h2 class="text-center fw-bold mb-5">Productos de Calidad</h2>
       <div class="row g-4">
+        <p class="text-center text-secondary" *ngIf="loading">Cargando productos...</p>
+        <p class="text-center text-danger" *ngIf="loadError">{{ loadError }}</p>
         <div class="col-md-6" *ngFor="let producto of productos">
           <div class="product-card">
             <div class="product-info">

@@ -1,6 +1,9 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { OnInit, ChangeDetectorRef } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ProductService } from '../../services/product.service';
+import { Product } from '../../model/product.model';
 
 interface Producto {
   id: number;
@@ -20,26 +23,56 @@ interface CarritoItem extends Producto {
   templateUrl: './distrilion.html',
   styleUrl: './distrilion.css',
 })
+export class DistriLion implements OnInit {
+  productos: Producto[] = [];
 
-export class Distrilion {
-
-  productos: Producto[] = [
-    { id: 1, nombre: 'Producto 1', descripcion: 'Descripción del producto 1', precio: 10000, imagen: 'assets/images/producto1.jpg' },
-    { id: 2, nombre: 'Producto 2', descripcion: 'Descripción del producto 2', precio: 19000, imagen: 'assets/images/producto2.jpg' },
-    { id: 3, nombre: 'Producto 3', descripcion: 'Descripción del producto 3', precio: 50000, imagen: 'assets/images/producto3.jpg' },
-    { id: 4, nombre: 'Producto 4', descripcion: 'Descripción del producto 4', precio: 15000, imagen: 'assets/images/producto4.jpg' },
-    { id: 5, nombre: 'Producto 5', descripcion: 'Descripción del producto 5', precio: 80000, imagen: 'assets/images/producto5.jpg' },
-    { id: 6, nombre: 'Producto 6', descripcion: 'Descripción del producto 6', precio: 12000, imagen: 'assets/images/producto6.jpg' },
-    { id: 7, nombre: 'Producto 7', descripcion: 'Descripción del producto 7', precio: 9000, imagen: 'assets/images/producto7.jpg' },
-    { id: 8, nombre: 'Producto 8', descripcion: 'Descripción del producto 8', precio: 14000, imagen: 'assets/images/producto8.jpg' },
-    { id: 9, nombre: 'Producto 9', descripcion: 'Descripción del producto 9', precio: 11000, imagen: 'assets/images/producto9.jpg' },
-    { id: 10, nombre: 'Producto 10', descripcion: 'Descripción del producto 10', precio: 7000, imagen: 'assets/images/producto10.jpg' },
+  // Imágenes del catálogo: se reparten por posición porque la API no trae imagen
+  private imagenes = [
+    'product1.jpeg',
+    'product2.jpg',
+    'product3.jpg',
+    'product4.webp',
+    'product5.jpeg',
   ];
 
+  // Estado de la carga: indicador mientras responde la API y mensaje si falla
+  loading = true;
+  loadError = '';
+
+  // Inyeccion de dependencias: producto de datos y refresco de vista
+  constructor(
+    private productService: ProductService,
+    private cdr: ChangeDetectorRef,
+  ) {}
+
+  // Al abrir la página se piden los productos a la API
+  ngOnInit() {
+    this.productService.getProducts().subscribe({
+      next: (list: Product[]) => {
+        // Convierte cada producto de la API a la forma que usa el catálogo y el carrito
+        this.productos = list.map((p, i) => ({
+          id: p.idProduct,
+          nombre: p.productName,
+          descripcion: p.productDescription,
+          precio: p.priceRetail,
+          imagen: this.imagenes[i % this.imagenes.length],
+        }));
+        this.loading = false;
+        this.cdr.detectChanges();
+      },
+      error: (err: HttpErrorResponse) => {
+        this.loadError = 'No se pudo cargar los productos. Intentalo de nuevo.';
+        this.loading = false;
+        this.cdr.detectChanges();
+      },
+    });
+  }
+
+  //Carrito de compras
   carrito: CarritoItem[] = [];
 
   agregarAlCarrito(producto: Producto) {
-    const existente = this.carrito.find(item => item.id === producto.id);
+    const existente = this.carrito.find((item) => item.id === producto.id);
     if (existente) {
       existente.cantidad++;
     } else {
@@ -49,7 +82,7 @@ export class Distrilion {
   }
   aumentarCantidad(item: CarritoItem) {
     item.cantidad++;
-  } 
+  }
 
   disminuirCantidad(item: CarritoItem) {
     if (item.cantidad > 1) {
@@ -60,7 +93,7 @@ export class Distrilion {
   }
 
   eliminarDelCarrito(item: CarritoItem) {
-    this.carrito = this.carrito.filter(i => i.id !== item.id);
+    this.carrito = this.carrito.filter((i) => i.id !== item.id);
   }
 
   toggleCarrito() {
@@ -78,14 +111,14 @@ export class Distrilion {
   }
 
   get totalPrecio(): number {
-    return this.carrito.reduce((sum, item) => sum + (item.cantidad * item.precio), 0);
+    return this.carrito.reduce((sum, item) => sum + item.cantidad * item.precio, 0);
   }
 
   formatoPrecio(precio: number): string {
     return precio.toLocaleString('es-CO');
   }
 
-  // Función para arrastran el menu 
+  // Función para arrastran el menu
 
   cartPosX = 20;
   cartPosY = window.innerHeight - 450;
@@ -106,7 +139,6 @@ export class Distrilion {
       this.cartPosX = event.clientX - this.offsetX;
       this.cartPosY = event.clientY - this.offsetY;
     }
-
   }
 
   @HostListener('document:mouseup')

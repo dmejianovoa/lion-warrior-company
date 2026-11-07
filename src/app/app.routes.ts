@@ -4,7 +4,7 @@ import { Login } from './pages/login/login';
 import { Register } from './pages/register/register';
 import { Service } from './pages/service/service';
 import { Contact } from './pages/contact/contact';
-import { Distrilion } from './pages/distrilion/distrilion';
+import { DistriLion } from './pages/distrilion/distrilion';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -13,5 +13,5 @@ export const routes: Routes = [
   { path: 'register', component: Register },
   { path: 'service', component: Service },
   { path: 'contact', component: Contact },
-  { path: 'distrilion', component: Distrilion },
+  { path: 'distrilion', component: DistriLion },
 ];

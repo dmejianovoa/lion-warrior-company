@@ -8,7 +8,7 @@ import { ServiceItem } from '../model/service-item.model';
 //Disponible en toda la aplicacion
 @Injectable({ providedIn: 'root' })
 export class ServiceItemService {
-  // URL base de usuarios (consultar, actualizar y eliminar)
+  // URL base de servicios (consultar, actualizar y eliminar)
   private apiUrl = `${environment.apiUrl}/api/services`;
 
   // Inyeccion de dependencias del HttpClient con constructor ya configurado
